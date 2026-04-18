@@ -24,14 +24,18 @@ function triggerEmergency() {
 }
 
 function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 18.5204, lng: 73.8567 },
-        zoom: 17,
-        disableDefaultUI: true,
-        styles: [
-            { "elementType": "geometry", "stylers": [{ "color": "#212121" }] },
-            { "elementType": "labels.text.fill", "stylers": [{ "color": "#757575" }] },
-            { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#2c2c2c" }] }
-        ]
-    });
+    try {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 18.5204, lng: 73.8567 },
+            zoom: 17,
+            disableDefaultUI: true,
+            // ... your styles
+        });
+    } catch (error) {
+        console.log("Map failed to load, but Assistant Logic is active.");
+        document.getElementById('map').innerHTML =
+            `<div style="display:flex; justify-content:center; align-items:center; height:100%; color:#555; text-align:center; padding:20px;">
+                Spatial Data Offline <br> (API Key Required for Production)
+             </div>`;
+    }
 }

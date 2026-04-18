@@ -30,6 +30,7 @@ header h1 {
     text-transform: uppercase;
     background: linear-gradient(45deg, #fff, var(--primary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
