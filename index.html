@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VenueFlow AI | Smart Stadium</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>VenueFlow AI</h1>
+        <div class="badge">Live Analytics Active</div>
+    </header>
+
+    <div id="map"></div>
+
+    <section id="assistant-ui">
+        <div class="status-card">
+            <h3>Proactive Flow Assistant</h3>
+            <p id="ai-output">Analyzing stadium density... Standing by for user request.</p>
+            <button class="action-btn" onclick="triggerSmartLogic()">Find Optimal Exit Path</button>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
