@@ -1,25 +1,37 @@
 function triggerSmartLogic() {
     const output = document.getElementById('ai-output');
-    output.innerText = "Querying Gemini for crowd bypass...";
+    output.style.opacity = "0.5";
+    output.innerText = "Recalculating flow vectors...";
 
     setTimeout(() => {
-        // Advanced Logic: Multi-variable check
-        const northLoad = 0.85;
-        const westLoad = 0.20;
+        output.style.opacity = "1";
+        // Logic: Compare Gate Loads
+        const nLoad = 0.82;
+        const wLoad = 0.15;
 
-        document.getElementById('north-load').innerText = (northLoad * 100) + "%";
-        document.getElementById('west-load').innerText = (westLoad * 100) + "%";
+        // Visual update of stats
+        document.getElementById('north-load').innerText = "82%";
+        document.getElementById('west-load').innerText = "15%";
+        document.getElementById('wait-time').innerText = "22m";
 
-        if (northLoad > 0.7 && westLoad < 0.4) {
-            output.innerHTML = "💡 <b>Diversion Recommended:</b> North Gate is oversaturated. Redirecting to <b>West Gate</b> via Corridor B. Time saved: 14 mins.";
-        } else {
-            output.innerHTML = "✅ <b>Path Clear:</b> Your current exit route remains the most efficient.";
-        }
-    }, 1000);
+        output.innerHTML = "<b>Bottleneck Detected:</b> North Gate is oversaturated. Path to <b>West Gate</b> via Tunnel A4 is 16 mins faster.";
+    }, 800);
 }
 
 function triggerEmergency() {
     document.body.classList.add('emergency-active');
-    const output = document.getElementById('ai-output');
-    output.innerHTML = "⚠️ <b>EVACUATION PROTOCOL ACTIVE:</b> Please proceed to the nearest Fire Exit at Gate 4. Do not use elevators. Follow staff instructions.";
+    document.getElementById('ai-output').innerHTML = "<b>⚠️ CRITICAL ALERT:</b> Emergency protocols active. Gates 1-4 are now Exit-Only. Follow floor lights to the nearest safe zone.";
+}
+
+function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 18.5204, lng: 73.8567 },
+        zoom: 17,
+        disableDefaultUI: true,
+        styles: [
+            { "elementType": "geometry", "stylers": [{ "color": "#212121" }] },
+            { "elementType": "labels.text.fill", "stylers": [{ "color": "#757575" }] },
+            { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#2c2c2c" }] }
+        ]
+    });
 }

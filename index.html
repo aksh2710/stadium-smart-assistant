@@ -4,31 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApexFlow | Stadium Intelligence</title>
+    <title>VenueFlow AI</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 </head>
 
 <body>
     <header>
-        <h1>APEXFLOW AI</h1>
-        <div id="connection-status" class="badge">● System Online</div>
+        <h1>VenueFlow <span style="font-weight:300">OS</span></h1>
     </header>
 
     <div id="map"></div>
 
     <section id="assistant-ui">
-        <div class="telemetry-row">
-            <div class="gate-status">North Gate: <span id="north-load" class="load-text">HIGH</span></div>
-            <div class="gate-status">West Gate: <span id="west-load" class="load-text">LOW</span></div>
+        <div class="telemetry">
+            <div class="stat-box">
+                <div class="stat-label">North Gate</div>
+                <div id="north-load" class="stat-value">32%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">West Gate</div>
+                <div id="west-load" class="stat-value">12%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Avg Wait</div>
+                <div id="wait-time" class="stat-value">6m</div>
+            </div>
         </div>
 
-        <div class="status-card">
-            <p id="ai-output" aria-live="polite">Ready to assist. Tap below for optimal exit routing.</p>
-            <div class="button-group">
-                <button class="action-btn" onclick="triggerSmartLogic()">Find Fastest Path</button>
-                <button class="emergency-btn" onclick="triggerEmergency()">Safety Protocol</button>
-            </div>
+        <p id="ai-output">System ready. Real-time telemetry synced from venue IoT mesh.</p>
+
+        <div class="btn-row">
+            <button class="main-btn" onclick="triggerSmartLogic()">Route Optimizer</button>
+            <button class="sos-btn" onclick="triggerEmergency()">SOS</button>
         </div>
     </section>
 
