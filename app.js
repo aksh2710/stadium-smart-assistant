@@ -1,27 +1,25 @@
 function triggerSmartLogic() {
     const output = document.getElementById('ai-output');
-    output.innerText = "Consulting Gemini for live bypass routes...";
-
-    // Mocking real-time sensor data
-    const sensors = {
-        northGate: Math.random(), // Random load 0.0 to 1.0
-        westGate: Math.random(),
-        concessionsBusy: true
-    };
+    output.innerText = "Querying Gemini for crowd bypass...";
 
     setTimeout(() => {
-        let recommendation = "";
+        // Advanced Logic: Multi-variable check
+        const northLoad = 0.85;
+        const westLoad = 0.20;
 
-        // Logical Decision Tree
-        if (sensors.northGate > 0.7) {
-            recommendation = "🚨 <b>High Density Alert:</b> North Gate is bottlenecked. ";
-            recommendation += (sensors.westGate < 0.5)
-                ? "Redirect to <b>West Gate</b> for a 2-minute entry."
-                : "All gates are currently high-load. Please remain in your zone for 10 minutes to avoid surges.";
+        document.getElementById('north-load').innerText = (northLoad * 100) + "%";
+        document.getElementById('west-load').innerText = (westLoad * 100) + "%";
+
+        if (northLoad > 0.7 && westLoad < 0.4) {
+            output.innerHTML = "💡 <b>Diversion Recommended:</b> North Gate is oversaturated. Redirecting to <b>West Gate</b> via Corridor B. Time saved: 14 mins.";
         } else {
-            recommendation = "✅ <b>Flow Optimal:</b> Your current route is the fastest. Estimated entry: 4 minutes.";
+            output.innerHTML = "✅ <b>Path Clear:</b> Your current exit route remains the most efficient.";
         }
+    }, 1000);
+}
 
-        output.innerHTML = recommendation;
-    }, 1200);
+function triggerEmergency() {
+    document.body.classList.add('emergency-active');
+    const output = document.getElementById('ai-output');
+    output.innerHTML = "⚠️ <b>EVACUATION PROTOCOL ACTIVE:</b> Please proceed to the nearest Fire Exit at Gate 4. Do not use elevators. Follow staff instructions.";
 }

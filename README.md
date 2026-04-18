@@ -25,3 +25,11 @@ VenueFlow utilizes a **Threshold-Based Decision Model** to manage crowd flow:
 ## Assumptions
 - Real-time IoT sensor data is available for all major stadium gates.
 - High-density Wi-Fi 6 or 5G connectivity is available for attendees.
+### Decision Logic Flowchart
+[Crowd Sensor Data] 
+    |
+    v
+[Threshold Check: > 0.7?] --(NO)--> [Maintain Current Route]
+    |
+    v (YES)
+[Alternative Comparison] --(Is Alt < 0.4?) --> [Issue Redirection Alert]
