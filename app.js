@@ -1,36 +1,27 @@
-// Simulated Real-Time Data (Evaluation Criteria: Logic)
-const stadiumData = {
-    gates: [
-        { id: "North", load: 0.85, estWait: "22 mins" },
-        { id: "West", load: 0.30, estWait: "4 mins" }
-    ],
-    userLocation: "North Gate"
-};
-
-// 1. Initialize Google Map
-function initMap() {
-    const puneStadium = { lat: 18.5204, lng: 73.8567 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 16,
-        center: puneStadium,
-        disableDefaultUI: true,
-        styles: [{ "featureType": "all", "elementType": "all", "stylers": [{ "invert_lightness": true }, { "saturation": 10 }, { "lightness": 30 }, { "gamma": 0.5 }, { "hue": "#435158" }] }]
-    });
-}
-
-// 2. Logic: The "Smart" Assistant Decision
 function triggerSmartLogic() {
     const output = document.getElementById('ai-output');
-    output.innerText = "Consulting Gemini for real-time traffic bypass...";
+    output.innerText = "Consulting Gemini for live bypass routes...";
 
-    // Simulation of AI processing
+    // Mocking real-time sensor data
+    const sensors = {
+        northGate: Math.random(), // Random load 0.0 to 1.0
+        westGate: Math.random(),
+        concessionsBusy: true
+    };
+
     setTimeout(() => {
-        const bestGate = stadiumData.gates.find(g => g.load < 0.5);
+        let recommendation = "";
 
-        output.innerHTML = `
-            <span style="color: #00ff88">✔ Recommendation:</span><br>
-            The ${stadiumData.userLocation} is currently at 85% capacity. 
-            Proceed to <b>${bestGate.id} Gate</b> to save approximately 18 minutes.
-        `;
-    }, 1500);
+        // Logical Decision Tree
+        if (sensors.northGate > 0.7) {
+            recommendation = "🚨 <b>High Density Alert:</b> North Gate is bottlenecked. ";
+            recommendation += (sensors.westGate < 0.5)
+                ? "Redirect to <b>West Gate</b> for a 2-minute entry."
+                : "All gates are currently high-load. Please remain in your zone for 10 minutes to avoid surges.";
+        } else {
+            recommendation = "✅ <b>Flow Optimal:</b> Your current route is the fastest. Estimated entry: 4 minutes.";
+        }
+
+        output.innerHTML = recommendation;
+    }, 1200);
 }
